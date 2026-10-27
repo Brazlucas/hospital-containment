@@ -4,6 +4,8 @@
 [ext_resource type="SpriteFrames" path="res://resources/enemy/doctor_frames.tres" id="2"]
 [ext_resource type="Texture2D" path="res://resources/textures/shadow_blob.tres" id="3"]
 
+[ext_resource type="Script" path="res://scripts/effects/reflector.gd" id="4_refl"]
+
 [sub_resource type="CircleShape2D" id="body_shape"]
 radius = 5.0
 
@@ -39,3 +41,6 @@ monitoring = false
 [node name="Shape" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -24)
 shape = SubResource("hurt_shape")
+
+[node name="Reflection" type="Node2D" parent="."]
+script = ExtResource("4_refl")

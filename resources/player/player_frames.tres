@@ -1,18 +1,18 @@
 [gd_resource type="SpriteFrames" format=3]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/player/idle_direita.png" id="79_hlugl"]
-[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_direita_0.png" id="165_gfcrn"]
-[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_direita_1.png" id="166_ryek0"]
-[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_direita_2.png" id="167_6rpnx"]
-[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_direita_3.png" id="168_w8k35"]
-[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_direita_4.png" id="169_iddlo"]
-[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_direita_5.png" id="170_hfu2u"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/idle_baixo_direita.png" id="1_isuxn"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_baixo_direita_0.png" id="2_8uvfe"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_baixo_direita_1.png" id="3_wdhmy"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_baixo_direita_2.png" id="4_v6020"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_baixo_direita_3.png" id="5_iq37g"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_baixo_direita_4.png" id="6_85y0c"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_baixo_direita_5.png" id="7_maanc"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("79_hlugl")
+"texture": ExtResource("1_isuxn")
 }],
 "loop": 1,
 "name": &"idle",
@@ -20,22 +20,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("165_gfcrn")
+"texture": ExtResource("2_8uvfe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("166_ryek0")
+"texture": ExtResource("3_wdhmy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("167_6rpnx")
+"texture": ExtResource("4_v6020")
 }, {
 "duration": 1.0,
-"texture": ExtResource("168_w8k35")
+"texture": ExtResource("5_iq37g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("169_iddlo")
+"texture": ExtResource("6_85y0c")
 }, {
 "duration": 1.0,
-"texture": ExtResource("170_hfu2u")
+"texture": ExtResource("7_maanc")
 }],
 "loop": 1,
 "name": &"walk",

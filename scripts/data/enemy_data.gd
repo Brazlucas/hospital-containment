@@ -4,7 +4,7 @@ extends Resource
 
 @export var id: StringName
 @export var display_name := ""
-@export var frames: SpriteFrames  ## "walk" required, "idle" / "attack" optional; drawn facing right, mirrored by the enemy
+@export var frames: SpriteFrames  ## "walk" required, "idle" / "attack" optional; drawn facing down-right (3/4 view), mirrored by the enemy
 @export var sprite_scale := 1.0
 @export var max_hp := 10.0
 @export var speed := 35.0

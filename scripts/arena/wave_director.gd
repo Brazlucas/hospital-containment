@@ -9,10 +9,10 @@ const ENEMY_SCENE := preload("res://scenes/enemies/enemy.tscn")
 const TELEGRAPH_TIME := 0.8
 const MAX_ALIVE := 120  ## spawns are skipped above this many zombies (performance + fairness)
 const MIN_PLAYER_DIST := 110.0
-const EDGE_MARGIN := 24.0
+const FURNITURE_CLEARANCE := 12.0  ## px a spawn keeps from walls and furniture
 
 var _wave: WaveData
-var _bounds: Rect2
+var _arena: Arena
 var _player: Player
 var _holder: Node2D
 var _time_left := 0.0
@@ -21,9 +21,9 @@ var _running := false
 var _markers := 0  ## telegraphs in flight
 
 
-func start(wave: WaveData, bounds: Rect2, player: Player, holder: Node2D) -> void:
+func start(wave: WaveData, arena: Arena, player: Player, holder: Node2D) -> void:
 	_wave = wave
-	_bounds = bounds
+	_arena = arena
 	_player = player
 	_holder = holder
 	_time_left = wave.duration
@@ -89,12 +89,15 @@ func _pick_enemy() -> EnemyData:
 	return _wave.enemies.back() if not _wave.enemies.is_empty() else null
 
 
-## A random spot inside the arena, preferably away from the player.
+## A random free spot in the arena, preferably away from the player.
 func _spawn_point() -> Vector2:
-	var area := _bounds.grow(-EDGE_MARGIN)
-	var p := area.position
-	for i in 8:
-		p = Vector2(randf_range(area.position.x, area.end.x), randf_range(area.position.y, area.end.y))
+	var area := _arena.bounds
+	var fallback := area.get_center()
+	for i in 40:
+		var p := Vector2(randf_range(area.position.x, area.end.x), randf_range(area.position.y, area.end.y))
+		if not _arena.is_free(p, FURNITURE_CLEARANCE):
+			continue
+		fallback = p
 		if p.distance_to(_player.global_position) >= MIN_PLAYER_DIST:
-			break
-	return p
+			return p
+	return fallback

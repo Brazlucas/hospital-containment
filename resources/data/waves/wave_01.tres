@@ -5,6 +5,8 @@
 [ext_resource type="Resource" path="res://resources/data/enemies/zumbi_medico.tres" id="3_med"]
 [ext_resource type="Resource" path="res://resources/data/enemies/rastejante.tres" id="4_cra"]
 
+[ext_resource type="Resource" path="res://resources/data/ambience/hospital.tres" id="5_amb"]
+
 [resource]
 script = ExtResource("1_wv")
 duration = 25.0
@@ -13,3 +15,4 @@ group_size = 2
 hp_multiplier = 1.0
 damage_multiplier = 1.0
 enemies = Array[ExtResource("2_ed")]([ExtResource("3_med")])
+ambience = ExtResource("5_amb")

@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" path="res://resources/textures/shadow_blob.tres" id="3"]
 [ext_resource type="Material" path="res://resources/materials/character_motion.tres" id="4"]
 
+[ext_resource type="Texture2D" path="res://resources/textures/light_radial.tres" id="5_light"]
+[ext_resource type="Script" path="res://scripts/effects/reflector.gd" id="6_refl"]
+
 [sub_resource type="CircleShape2D" id="body_shape"]
 radius = 6.0
 
@@ -39,3 +42,12 @@ position = Vector2(0, -18)
 position = Vector2(0, -18)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
+
+[node name="Torch" type="PointLight2D" parent="."]
+position = Vector2(0, -14)
+color = Color(1, 0.86, 0.66, 1)
+energy = 0.35
+texture = ExtResource("5_light")
+
+[node name="Reflection" type="Node2D" parent="."]
+script = ExtResource("6_refl")

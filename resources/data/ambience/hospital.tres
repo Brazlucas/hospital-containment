@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AmbiencePreset" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ambience_preset.gd" id="1_ap"]
+
+[resource]
+script = ExtResource("1_ap")
+display_name = ""
+ambient = Color(0.82, 0.88, 0.9, 1)
+light_tint = Color(1, 1, 1, 1)
+light_energy = 1.0
+light_style = 1
+fog_density = 0.0
+fog_color = Color(0.75, 0.85, 0.82, 1)
+torch_energy = 0.35
+torch_scale = 1.0
+ambient_flicker = true

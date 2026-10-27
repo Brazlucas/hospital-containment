@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 ## The patient. Moves with WASD / arrows; weapons aim and fire by themselves (see Weapon).
-## Art is one side drawn facing right and mirrored with flip_h, like Brotato.
+## Art is one 3/4 view drawn facing down-right and mirrored with flip_h, like Brotato.
 
 const BASE_SPEED := 85.0
 const HIT_INVULNERABLE := 0.5  ## seconds of protection after taking a hit
@@ -104,6 +104,7 @@ func _on_stats_changed() -> void:
 func _die() -> void:
 	dead = true
 	velocity = Vector2.ZERO
+	$Reflection.set_enabled(false)  # the body tips over; its mirror image would not follow
 	_sprite.stop()
 	var tw := create_tween().set_parallel()
 	tw.tween_property(_sprite, "rotation", PI / 2.0 * (-1.0 if _sprite.flip_h else 1.0), 0.35)

@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/effects/fog.gd" id="1"]
+[ext_resource type="Shader" path="res://scripts/effects/fog.gdshader" id="2"]
+
+[sub_resource type="FastNoiseLite" id="noise_lib"]
+noise_type = 3
+frequency = 0.012
+fractal_octaves = 4
+
+[sub_resource type="NoiseTexture2D" id="noise_tex"]
+width = 512
+height = 512
+seamless = true
+noise = SubResource("noise_lib")
+
+[sub_resource type="ShaderMaterial" id="mist_mat"]
+shader = ExtResource("2")
+
+[node name="Fog" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Mist" type="Sprite2D" parent="."]
+material = SubResource("mist_mat")
+texture = SubResource("noise_tex")

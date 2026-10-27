@@ -10,6 +10,8 @@ var _xp_bar: ProgressBar
 var _level_label: Label
 var _wave_label: Label
 var _time_label: Label
+var _ambience_label: Label
+var _ambience_tween: Tween
 var _materials_label: Label
 var _result: PanelContainer
 var _result_title: Label
@@ -32,6 +34,7 @@ func _ready() -> void:
 	Events.materials_changed.connect(_on_materials)
 	Events.wave_started.connect(_on_wave_started)
 	Events.wave_time_changed.connect(_on_time)
+	Events.ambience_changed.connect(_on_ambience)
 	Events.run_ended.connect(_on_run_ended)
 
 
@@ -62,6 +65,10 @@ func _build_top_center(root: Control) -> void:
 	_time_label.add_theme_font_size_override("font_size", 16)
 	box.add_child(_wave_label)
 	box.add_child(_time_label)
+	_ambience_label = _label("", HORIZONTAL_ALIGNMENT_CENTER)
+	_ambience_label.add_theme_color_override("font_color", Color(0.95, 0.35, 0.35))
+	_ambience_label.modulate.a = 0.0
+	box.add_child(_ambience_label)
 
 
 func _build_top_right(root: Control) -> void:
@@ -146,6 +153,17 @@ func _on_time(seconds_left: float) -> void:
 	if s != _last_second:  # the clock label only changes once a second
 		_last_second = s
 		_time_label.text = "%d" % s
+
+
+## The atmosphere's name shows for a few seconds under the clock.
+func _on_ambience(display_name: String) -> void:
+	_ambience_label.text = display_name.to_upper()
+	if _ambience_tween:
+		_ambience_tween.kill()
+	_ambience_label.modulate.a = 1.0
+	_ambience_tween = create_tween()
+	_ambience_tween.tween_interval(3.0)
+	_ambience_tween.tween_property(_ambience_label, "modulate:a", 0.0, 1.0)
 
 
 func _on_run_ended(victory: bool) -> void:

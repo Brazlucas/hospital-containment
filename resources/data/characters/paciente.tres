@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/data/character_data.gd" id="1_cd"]
 [ext_resource type="SpriteFrames" path="res://resources/player/player_frames.tres" id="2_fr"]
-[ext_resource type="Resource" path="res://resources/data/weapons/pistola.tres" id="3_w"]
+[ext_resource type="Resource" path="res://resources/data/weapons/taco.tres" id="3_w"]
 
 [resource]
 script = ExtResource("1_cd")

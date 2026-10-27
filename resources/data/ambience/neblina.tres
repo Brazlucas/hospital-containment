@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AmbiencePreset" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ambience_preset.gd" id="1_ap"]
+
+[resource]
+script = ExtResource("1_ap")
+display_name = "Névoa na ala"
+ambient = Color(0.62, 0.72, 0.74, 1)
+light_tint = Color(1, 1, 1, 1)
+light_energy = 0.9
+light_style = 1
+fog_density = 0.55
+fog_color = Color(0.72, 0.84, 0.8, 1)
+torch_energy = 0.45
+torch_scale = 1.1
+ambient_flicker = true

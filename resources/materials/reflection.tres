@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" path="res://scripts/effects/reflection.gdshader" id="1"]
+
+[resource]
+shader = ExtResource("1")
+shader_parameter/alpha_dry = 0.5
+shader_parameter/alpha_wet = 0.9
+shader_parameter/fade_dry = 44.0
+shader_parameter/fade_wet = 70.0

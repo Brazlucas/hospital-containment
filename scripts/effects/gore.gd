@@ -81,3 +81,6 @@ static func stain(holder: Node, pos: Vector2) -> void:
 	d.modulate.a = 0.9
 	decals.add_child(d)
 	d.global_position = pos
+	var map := holder.get_tree().get_first_node_in_group("reflection_map")
+	if map:  # fresh blood is a puddle too: zombies reflect in it
+		map.stamp_wet(pos, d.texture.get_width() * d.scale.x * 0.3)

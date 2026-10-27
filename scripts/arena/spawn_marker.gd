@@ -4,8 +4,14 @@ extends Node2D
 
 signal finished
 
+const UNSHADED: Material = preload("res://resources/materials/unshaded.tres")
+
 var duration := 0.8
 var _t := 0.0
+
+
+func _ready() -> void:
+	material = UNSHADED  # the warning stays visible in a blackout
 
 
 func _process(delta: float) -> void:

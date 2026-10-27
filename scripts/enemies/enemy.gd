@@ -6,6 +6,9 @@ extends CharacterBody2D
 const HURT_SHADER := preload("res://scripts/effects/hurt_flash.gdshader")
 const PICKUP_SCENE := preload("res://scenes/pickups/material_pickup.tscn")
 const ATTACK_TIME := 0.45  ## seconds the bite animation runs
+const BLOCKED_TIME := 0.3  ## seconds without progress before a zombie sidesteps
+const DETOUR_TIME := 0.9
+const DETOUR_ANGLE := 1.25  ## radians (~70 degrees) off the straight line while sidestepping
 
 var data: EnemyData
 var health := 1.0
@@ -18,6 +21,9 @@ var _attack_t := -1.0  ## seconds into the current bite, -1 = not biting
 var _bite_landed := false
 var _knock := Vector2.ZERO
 var _last_hit_from := Vector2.ZERO
+var _blocked_t := 0.0  ## seconds spent pushing against something without getting anywhere
+var _detour_t := 0.0  ## seconds left of sidestepping an obstacle
+var _detour_sign := 1.0
 
 @onready var _sprite: AnimatedSprite2D = $Sprite
 @onready var _hurt_shape: CollisionShape2D = $Hurtbox/Shape
@@ -64,12 +70,33 @@ func _physics_process(delta: float) -> void:
 		_tick_bite(delta)
 		velocity = _knock
 	else:
-		velocity = to.normalized() * data.speed + _knock
+		var heading := to.normalized()
+		if _detour_t > 0.0:
+			_detour_t -= delta
+			heading = heading.rotated(_detour_sign * DETOUR_ANGLE)
+		velocity = heading * data.speed + _knock
 		if to.length() <= data.contact_range and _attack_cd <= 0.0:
 			_begin_bite()
 	move_and_slide()
+	_check_blocked(delta, to.length())
 	if absf(to.x) > 2.0:
 		_sprite.flip_h = to.x < 0.0
+
+
+## Zombies walk straight at the player, so a bed in between can pin one for good. When it barely moves
+## while trying to, it sidesteps (random side) for a moment and then goes straight again.
+func _check_blocked(delta: float, dist: float) -> void:
+	if _attack_t >= 0.0 or _detour_t > 0.0 or dist <= data.contact_range * 2.0:
+		_blocked_t = 0.0
+		return
+	if get_position_delta().length() < data.speed * delta * 0.3:
+		_blocked_t += delta
+		if _blocked_t >= BLOCKED_TIME:
+			_blocked_t = 0.0
+			_detour_t = DETOUR_TIME
+			_detour_sign = 1.0 if randf() < 0.5 else -1.0
+	else:
+		_blocked_t = 0.0
 
 
 func _begin_bite() -> void:

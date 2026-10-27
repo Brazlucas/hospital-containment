@@ -2,6 +2,8 @@ class_name Projectile
 extends Area2D
 ## A bullet. Flies straight for the weapon's range and damages enemies whose hurtbox it touches.
 
+const UNSHADED: Material = preload("res://resources/materials/unshaded.tres")
+
 var _velocity := Vector2.ZERO
 var _damage := 1.0
 var _crit := false
@@ -12,6 +14,7 @@ var _hit: Array[Enemy] = []
 
 
 func _ready() -> void:
+	material = UNSHADED  # bullets glow even in a blackout
 	z_index = 5  # always above the y-sorted actors
 	area_entered.connect(_on_area_entered)
 

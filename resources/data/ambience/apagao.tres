@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AmbiencePreset" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ambience_preset.gd" id="1_ap"]
+
+[resource]
+script = ExtResource("1_ap")
+display_name = "Apagão"
+ambient = Color(0.04, 0.05, 0.075, 1)
+light_tint = Color(0.8, 0.9, 1, 1)
+light_energy = 0.2
+light_style = 2
+fog_density = 0.25
+fog_color = Color(0.5, 0.6, 0.65, 1)
+torch_energy = 1.0
+torch_scale = 1.5
+ambient_flicker = false

@@ -4,6 +4,6 @@ extends Resource
 
 @export var id: StringName
 @export var display_name := ""
-@export var frames: SpriteFrames  ## "idle" + "walk", drawn facing right
+@export var frames: SpriteFrames  ## "idle" + "walk", drawn facing down-right (3/4 view)
 @export var base_stats: Dictionary = {}  ## overrides of Stats.INFO base values
 @export var starting_weapon: WeaponData
