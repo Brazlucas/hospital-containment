@@ -1,6 +1,6 @@
 extends CanvasLayer
-## Level-up picks between waves: one offer of 3 upgrades per level gained during the wave.
-## The pool is every .tres in resources/data/upgrades/.
+## Level-up picks between waves: one offer of 3 cards per level gained during the wave. Each card is an upgrade at a
+## rarity (see Rarity): rarer cards give bigger bonuses and shimmer more. The pool is every .tres in resources/data/upgrades/.
 
 signal finished
 
@@ -45,7 +45,7 @@ func _build_ui() -> void:
 	_title.add_theme_font_size_override("font_size", 14)
 	box.add_child(_title)
 	_cards = HBoxContainer.new()
-	_cards.add_theme_constant_override("separation", 8)
+	_cards.add_theme_constant_override("separation", 4)
 	box.add_child(_cards)
 
 
@@ -54,25 +54,23 @@ func _offer() -> void:
 		_cards.remove_child(c)
 		c.queue_free()
 	_title.text = "NÍVEL %d  ·  escolha uma melhoria" % (RunState.level - RunState.pending_levels + 1)
-	for u in _roll():
-		var b := Button.new()
-		b.custom_minimum_size = Vector2(130, 90)
-		b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		b.add_theme_font_size_override("font_size", 10)
-		var owned := RunState.stacks_of(u.id)
-		b.text = "%s%s\n\n%s" % [u.display_name, " (x%d)" % owned if owned > 0 else "", u.effect_text()]
-		b.tooltip_text = u.flavor
-		b.pressed.connect(_pick.bind(u))
-		_cards.add_child(b)
+	var offers := _roll()
+	for i in offers.size():
+		var card := UpgradeCard.new()
+		card.offer = offers[i]
+		card.deal_delay = i * 0.09
+		card.pressed.connect(_pick.bind(offers[i]))
+		_cards.add_child(card)
 	if _cards.get_child_count() > 0:
 		_cards.get_child(0).grab_focus.call_deferred()
 
 
-## Weighted pick without repeats, skipping upgrades already at their max stacks.
-func _roll() -> Array[UpgradeData]:
+## Different upgrades (weighted, skipping those at their max stacks), each at a rarity rolled by the wave and luck.
+func _roll() -> Array[UpgradeOffer]:
 	var candidates: Array[UpgradeData] = []
 	candidates.assign(_pool.filter(func(u: UpgradeData) -> bool: return u.max_stacks <= 0 or RunState.stacks_of(u.id) < u.max_stacks))
-	var out: Array[UpgradeData] = []
+	var luck := RunState.stats.get_value("luck")
+	var out: Array[UpgradeOffer] = []
 	while out.size() < CHOICES and not candidates.is_empty():
 		var total := 0.0
 		for u in candidates:
@@ -84,13 +82,13 @@ func _roll() -> Array[UpgradeData]:
 			if r <= 0.0:
 				picked = u
 				break
-		out.append(picked)
+		out.append(UpgradeOffer.new(picked, Rarity.roll(RunState.wave, luck)))
 		candidates.erase(picked)
 	return out
 
 
-func _pick(u: UpgradeData) -> void:
-	RunState.take_upgrade(u)
+func _pick(offer: UpgradeOffer) -> void:
+	RunState.take_upgrade(offer.upgrade, offer.tier)
 	RunState.pending_levels -= 1
 	if RunState.pending_levels > 0:
 		_offer()

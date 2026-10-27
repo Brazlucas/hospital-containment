@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/upgrade_data.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"pe_de_coelho"
+display_name = "Pé de coelho"
+flavor = "Não ajudou o coelho."
+modifiers = {
+"luck": 10.0
+}
+weight = 0.8
+max_stacks = 0

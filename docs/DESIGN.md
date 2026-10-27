@@ -33,7 +33,7 @@ Camadas de física: `world`(1), `player`(2), `enemy`(3), `enemy_hurtbox`(4). Pro
 
 | Quer | Faça |
 |---|---|
-| Upgrade | novo `.tres` (UpgradeData) em `resources/data/upgrades/`. A tela de upgrade varre a pasta, não precisa registrar |
+| Upgrade | novo `.tres` (UpgradeData) em `resources/data/upgrades/`. A tela de upgrade varre a pasta, não precisa registrar; a raridade é sorteada na hora, então um arquivo serve para as 5 |
 | Atributo novo | uma linha em `Stats.INFO` e leia o valor onde importa (`RunState.stats.mult("x_pct")`) |
 | Inimigo | novo `.tres` (EnemyData) + SpriteFrames com `walk` (e `idle`/`attack`) virados pra baixo-direita (3/4); coloque no `enemies` de uma onda |
 | Arma | novo `.tres` (WeaponData). `kind` = `RANGED` (tiro) ou `MELEE` (golpe em arco); o `Weapon` cuida de mira, tiro/golpe, recuo, flash e rastro |
@@ -62,6 +62,29 @@ O `ArenaLayout` (`resources/data/arenas/enfermaria.tres`) guarda:
 
 Zumbis andam em linha reta até o player; se ficam presos num móvel, desviam de lado por instantes (`Enemy._check_blocked`).
 Limitação: os móveis são parte da pintura, então o player sempre aparece por cima deles (sem y-sort contra a mobília).
+
+## Cartas de upgrade e raridade
+
+Depois de cada onda, cada nível ganho vira uma escolha de 3 cartas (`UpgradeScreen` + `UpgradeCard`). Cada carta é um
+upgrade **numa raridade**, e a raridade multiplica os números do upgrade, como no Brotato:
+
+| Raridade | Bônus | Efeito visual (shader `scripts/ui/card.gdshader`) |
+|---|---|---|
+| Comum | x1 | aço escovado: listras finas, brilho que desliza com a inclinação, borda clara |
+| Incomum | x1,5 | foil: faixa prateada que desliza, com brilhos |
+| Rara | x2,2 | holográfica: arco-íris que muda com a inclinação, borda iridescente |
+| Épica | x3,2 | polychrome: cores girando, reflexo que viaja, brilhos |
+| Lendária | x4,5 | ouro: chamas que sobem, faíscas, borda pulsando |
+
+Penalidades (valores negativos) crescem só pela metade, então os upgrades com desvantagem ficam mais atraentes nas raridades altas.
+
+- **Sorteio** (`Rarity.roll`): depende da onda que acabou de terminar (`Rarity.WEIGHTS`: na 1ª, 85% comum e 15% incomum; da 4ª em
+  diante já aparecem lendárias) e do atributo **Sorte** (`luck`), que aumenta a chance de tudo acima de comum.
+- **A carta** é um `Button` (mouse, teclado e controle funcionam). O rosto é desenhado num `SubViewport` e o shader o inclina em
+  perspectiva na direção do ponteiro, então o texto e a borda inclinam juntos. Com o teclado, a carta selecionada balança sozinha.
+  Os efeitos de cor só tingem o fundo escuro e deixam o texto claro intacto, pra manter a leitura.
+- **Ajustes:** multiplicadores e chances em `scripts/core/rarity.gd`; cores e intensidade de cada efeito em `card.gdshader`.
+  `UpgradeData.icon` (opcional) já está pronto para quando houver arte por upgrade.
 
 ## Atmosfera e efeitos
 

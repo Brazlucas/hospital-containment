@@ -16,6 +16,7 @@ var dead := false
 
 var _player: Player
 var _damage_mult := 1.0
+var _speed_mult := 1.0  ## each zombie walks a little faster or slower than its type
 var _attack_cd := 0.0
 var _attack_t := -1.0  ## seconds into the current bite, -1 = not biting
 var _bite_landed := false
@@ -34,6 +35,7 @@ func setup(d: EnemyData, hp_mult := 1.0, damage_mult := 1.0) -> void:
 	data = d
 	health = d.max_hp * hp_mult
 	_damage_mult = damage_mult
+	_speed_mult = randf_range(0.88, 1.2)
 	_player = get_tree().get_first_node_in_group("player") as Player
 	_sprite.sprite_frames = d.frames
 	_sprite.scale = Vector2.ONE * d.sprite_scale
@@ -74,7 +76,10 @@ func _physics_process(delta: float) -> void:
 		if _detour_t > 0.0:
 			_detour_t -= delta
 			heading = heading.rotated(_detour_sign * DETOUR_ANGLE)
-		velocity = heading * data.speed + _knock
+		var speed := data.speed * _speed_mult
+		if to.length() <= data.lunge_range:
+			speed *= data.lunge_speed_mult  # close enough to smell the player: it rushes
+		velocity = heading * speed + _knock
 		if to.length() <= data.contact_range and _attack_cd <= 0.0:
 			_begin_bite()
 	move_and_slide()

@@ -14,6 +14,7 @@ const INFO := {
 	"armor": {"label": "Armadura", "base": 0.0, "suffix": ""},
 	"pickup_range_pct": {"label": "Alcance de coleta", "base": 0.0, "suffix": "%"},
 	"crit_chance": {"label": "Crítico", "base": 0.0, "suffix": "%"},
+	"luck": {"label": "Sorte", "base": 0.0, "suffix": ""},
 }
 
 var _values := {}
@@ -51,11 +52,28 @@ func damage_taken_mult() -> float:
 	return 15.0 / (15.0 + maxf(get_value("armor"), -10.0))
 
 
-## "+5 Vida máxima\n+12% Dano": the effect lines shown on upgrade cards.
+## "+5 Vida máxima\n+12% Dano": the effect lines of a modifier set.
 static func describe(modifiers: Dictionary) -> String:
-	var lines := PackedStringArray()
+	var texts := PackedStringArray()
+	for line in lines(modifiers):
+		texts.append(line["text"])
+	return "\n".join(texts)
+
+
+## 5 -> "5", 7.5 -> "7.5".
+static func _number(amount: float) -> String:
+	var v := snappedf(amount, 0.1)
+	return "%d" % int(v) if is_equal_approx(v, roundf(v)) else "%.1f" % v
+
+
+## One entry per modifier, {"text": "+12% Dano", "positive": true}, so the cards can colour each line.
+static func lines(modifiers: Dictionary) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
 	for id in modifiers:
 		var info: Dictionary = INFO.get(id, {"label": id, "suffix": ""})
 		var amount := float(modifiers[id])
-		lines.append("%s%s%s %s" % ["+" if amount >= 0.0 else "", String.num(snappedf(amount, 0.1)), info["suffix"], info["label"]])
-	return "\n".join(lines)
+		out.append({
+			"text": "%s%s%s %s" % ["+" if amount >= 0.0 else "", _number(amount), info["suffix"], info["label"]],
+			"positive": amount >= 0.0,
+		})
+	return out

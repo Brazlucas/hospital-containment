@@ -7,6 +7,7 @@ extends Resource
 @export var display_name := ""
 @export_multiline var flavor := ""
 @export var modifiers: Dictionary = {}  ## stat id -> amount, see Stats.INFO (negative values make trade-offs)
+@export var icon: Texture2D  ## optional art shown on the card
 @export var weight := 1.0  ## relative chance of being offered
 @export var max_stacks := 0  ## 0 = unlimited
 

@@ -10,9 +10,9 @@
 [resource]
 script = ExtResource("1_wv")
 duration = 40.0
-spawn_interval = 1.1
-group_size = 3
+spawn_interval = 0.95
+group_size = 4
 hp_multiplier = 1.5
-damage_multiplier = 1.25
+damage_multiplier = 1.2
 enemies = Array[ExtResource("2_ed")]([ExtResource("3_med"), ExtResource("4_cra")])
 ambience = ExtResource("5_amb")

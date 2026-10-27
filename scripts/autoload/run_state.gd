@@ -53,8 +53,9 @@ func add_xp(amount: float) -> void:
 	Events.xp_changed.emit(level, xp, xp_to_next())
 
 
-func take_upgrade(u: UpgradeData) -> void:
-	stats.apply(u.modifiers)
+## `tier` (a Rarity.Tier) scales the upgrade's numbers.
+func take_upgrade(u: UpgradeData, tier := Rarity.Tier.COMMON) -> void:
+	stats.apply(Rarity.scale(u.modifiers, tier))
 	upgrades[u.id] = stacks_of(u.id) + 1
 	Events.stats_changed.emit()
 
