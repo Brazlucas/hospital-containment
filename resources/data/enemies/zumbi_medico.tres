@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_ed"]
+[ext_resource type="SpriteFrames" path="res://resources/enemy/doctor_frames.tres" id="2_fr"]
+
+[resource]
+script = ExtResource("1_ed")
+id = &"zumbi_medico"
+display_name = "Médico infectado"
+frames = ExtResource("2_fr")
+sprite_scale = 1.2
+max_hp = 10.0
+speed = 34.0
+contact_damage = 2.0
+materials = 2
+hit_height = 26.0
+hit_radius = 10.0
+spawn_weight = 3.0

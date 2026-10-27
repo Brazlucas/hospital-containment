@@ -1,0 +1,2 @@
+Noto Serif (Google) and JetBrains Mono (JetBrains) are licensed under the SIL Open Font License 1.1
+(https://openfontlicense.org). Copied from the system font packages noto-fonts and ttf-jetbrains-mono.

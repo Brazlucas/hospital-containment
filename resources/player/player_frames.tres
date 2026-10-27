@@ -1,0 +1,43 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/player/idle_direita.png" id="79_hlugl"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_direita_0.png" id="165_gfcrn"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_direita_1.png" id="166_ryek0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_direita_2.png" id="167_6rpnx"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_direita_3.png" id="168_w8k35"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_direita_4.png" id="169_iddlo"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/andar_direita_5.png" id="170_hfu2u"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("79_hlugl")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("165_gfcrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_ryek0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_6rpnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_w8k35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_iddlo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_hfu2u")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 8.0
+}]

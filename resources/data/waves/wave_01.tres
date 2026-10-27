@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/wave_data.gd" id="1_wv"]
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="2_ed"]
+[ext_resource type="Resource" path="res://resources/data/enemies/zumbi_medico.tres" id="3_med"]
+[ext_resource type="Resource" path="res://resources/data/enemies/rastejante.tres" id="4_cra"]
+
+[resource]
+script = ExtResource("1_wv")
+duration = 25.0
+spawn_interval = 1.6
+group_size = 2
+hp_multiplier = 1.0
+damage_multiplier = 1.0
+enemies = Array[ExtResource("2_ed")]([ExtResource("3_med")])

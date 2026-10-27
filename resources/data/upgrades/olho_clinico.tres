@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/upgrade_data.gd" id="1_ud"]
+
+[resource]
+script = ExtResource("1_ud")
+id = &"olho_clinico"
+display_name = "Olho clínico"
+flavor = "Diagnóstico instantâneo."
+modifiers = {
+"crit_chance": 6.0
+}
+weight = 1.0
+max_stacks = 0

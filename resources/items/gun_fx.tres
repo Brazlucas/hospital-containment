@@ -1,0 +1,63 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/items/muzzle_fx_0.png" id="1_odt32"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/muzzle_fx_1.png" id="2_tsh7c"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/muzzle_fx_2.png" id="3_kmg8i"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/muzzle_fx_3.png" id="4_tcqa1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/muzzle_fx_4.png" id="5_xwm46"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/muzzle_fx_5.png" id="6_l3pk4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/shell_0.png" id="7_c735l"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/shell_1.png" id="8_xlmho"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/shell_2.png" id="9_xcp2y"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/shell_3.png" id="10_yo108"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/shell_4.png" id="11_mgnxo"]
+[ext_resource type="Texture2D" path="res://assets/sprites/items/shell_5.png" id="12_rfufj"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_odt32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tsh7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kmg8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tcqa1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xwm46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l3pk4")
+}],
+"loop": 0,
+"name": &"flash",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_c735l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xlmho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xcp2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yo108")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mgnxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rfufj")
+}],
+"loop": 0,
+"name": &"shell",
+"speed": 16.0
+}]

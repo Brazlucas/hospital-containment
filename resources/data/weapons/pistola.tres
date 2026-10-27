@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/weapon_data.gd" id="1_wd"]
+[ext_resource type="Texture2D" path="res://assets/sprites/weapons/pistola.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_wd")
+id = &"pistola"
+display_name = "Pistola .40"
+icon = ExtResource("2_icon")
+damage = 4.0
+cooldown = 0.55
+attack_range = 190.0
+projectile_speed = 420.0

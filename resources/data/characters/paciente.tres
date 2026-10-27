@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/character_data.gd" id="1_cd"]
+[ext_resource type="SpriteFrames" path="res://resources/player/player_frames.tres" id="2_fr"]
+[ext_resource type="Resource" path="res://resources/data/weapons/pistola.tres" id="3_w"]
+
+[resource]
+script = ExtResource("1_cd")
+id = &"paciente"
+display_name = "Paciente"
+frames = ExtResource("2_fr")
+base_stats = {
+"max_hp": 20.0
+}
+starting_weapon = ExtResource("3_w")

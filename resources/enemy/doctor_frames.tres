@@ -1,0 +1,108 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/attack_direita_0.png" id="50_ejfh5"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/attack_direita_1.png" id="51_v3gak"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/attack_direita_2.png" id="52_eiv6h"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/attack_direita_3.png" id="53_5kag6"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/attack_direita_4.png" id="54_gb22b"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/attack_direita_5.png" id="55_lirnf"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/attack_direita_6.png" id="56_7kw4x"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/attack_direita_7.png" id="57_srtom"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/idle_direita_0.png" id="102_hx0ya"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/idle_direita_1.png" id="103_21bkg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/idle_direita_2.png" id="104_ahaj0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/idle_direita_3.png" id="105_aq1ff"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/idle_direita_4.png" id="106_k6md0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/idle_direita_5.png" id="107_fufbq"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/walk_direita_0.png" id="162_p6r4s"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/walk_direita_1.png" id="163_lsehk"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/walk_direita_2.png" id="164_8688x"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/walk_direita_3.png" id="165_m455x"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/walk_direita_4.png" id="166_x7dn4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/walk_direita_5.png" id="167_xq2gv"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/walk_direita_6.png" id="168_4vdar"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/doctor/walk_direita_7.png" id="169_h8i4o"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("50_ejfh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_v3gak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_eiv6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_5kag6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_gb22b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_lirnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_7kw4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_srtom")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("102_hx0ya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_21bkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_ahaj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_aq1ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_k6md0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_fufbq")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("162_p6r4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_lsehk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_8688x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_m455x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_x7dn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_xq2gv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_4vdar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_h8i4o")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 11.0
+}]

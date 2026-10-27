@@ -1,0 +1,92 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/attack_direita_0.png" id="37_kffxh"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/attack_direita_1.png" id="38_v5fxr"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/attack_direita_2.png" id="39_evovu"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/attack_direita_3.png" id="40_w3oqy"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/attack_direita_4.png" id="41_h554j"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/attack_direita_5.png" id="42_whg68"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/idle_direita_0.png" id="73_ujm5e"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/idle_direita_1.png" id="74_2motg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/idle_direita_2.png" id="75_5mbq0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/idle_direita_3.png" id="76_5nle0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/walk_direita_0.png" id="129_rmbmw"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/walk_direita_1.png" id="130_0uun6"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/walk_direita_2.png" id="131_5id0r"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/walk_direita_3.png" id="132_0ov0o"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/walk_direita_4.png" id="133_7w8tu"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/walk_direita_5.png" id="134_4bm8c"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/walk_direita_6.png" id="135_qhnnj"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemy/crawler/walk_direita_7.png" id="136_gdiv3"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_kffxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_v5fxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_evovu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_w3oqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_h554j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_whg68")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("73_ujm5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_2motg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_5mbq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_5nle0")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("129_rmbmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_0uun6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_5id0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_0ov0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_7w8tu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_4bm8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_qhnnj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_gdiv3")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 11.0
+}]
