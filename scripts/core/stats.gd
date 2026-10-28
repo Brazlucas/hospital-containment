@@ -6,7 +6,7 @@ extends RefCounted
 
 const INFO := {
 	"max_hp": {"label": "Vida máxima", "base": 10.0, "suffix": ""},
-	"hp_regen": {"label": "Regeneração", "base": 0.0, "suffix": "/s"},
+	"hp_regen": {"label": "Regeneração", "base": 0.4, "suffix": "/s"},
 	"damage_pct": {"label": "Dano", "base": 0.0, "suffix": "%"},
 	"attack_speed_pct": {"label": "Vel. de ataque", "base": 0.0, "suffix": "%"},
 	"range_pct": {"label": "Alcance", "base": 0.0, "suffix": "%"},
@@ -15,6 +15,10 @@ const INFO := {
 	"pickup_range_pct": {"label": "Alcance de coleta", "base": 0.0, "suffix": "%"},
 	"crit_chance": {"label": "Crítico", "base": 0.0, "suffix": "%"},
 	"luck": {"label": "Sorte", "base": 0.0, "suffix": ""},
+	"pierce": {"label": "Perfuração", "base": 0.0, "suffix": ""},
+	"explosion_pct": {"label": "Área de explosão", "base": 0.0, "suffix": "%"},
+	"knockback_pct": {"label": "Empurrão", "base": 0.0, "suffix": "%"},
+	"heal_on_kill": {"label": "Cura por abate", "base": 0.0, "suffix": ""},
 }
 
 var _values := {}
@@ -61,7 +65,7 @@ static func describe(modifiers: Dictionary) -> String:
 
 
 ## 5 -> "5", 7.5 -> "7.5".
-static func _number(amount: float) -> String:
+static func number(amount: float) -> String:
 	var v := snappedf(amount, 0.1)
 	return "%d" % int(v) if is_equal_approx(v, roundf(v)) else "%.1f" % v
 
@@ -73,7 +77,7 @@ static func lines(modifiers: Dictionary) -> Array[Dictionary]:
 		var info: Dictionary = INFO.get(id, {"label": id, "suffix": ""})
 		var amount := float(modifiers[id])
 		out.append({
-			"text": "%s%s%s %s" % ["+" if amount >= 0.0 else "", _number(amount), info["suffix"], info["label"]],
+			"text": "%s%s%s %s" % ["+" if amount >= 0.0 else "", number(amount), info["suffix"], info["label"]],
 			"positive": amount >= 0.0,
 		})
 	return out

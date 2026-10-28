@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="ArenaLayout" format=3 uid="uid://bmyetd843wlkg"]
+
+[ext_resource type="Script" uid="uid://dm17l47yeqpei" path="res://scripts/data/arena_layout.gd" id="1_al"]
+[ext_resource type="Texture2D" uid="uid://1blnh4kdu7gc" path="res://assets/arenas/enfermaria_2.png" id="2_bg"]
+[ext_resource type="Script" uid="uid://mrx0ff4f06m8" path="res://scripts/data/arena_light.gd" id="3_al"]
+
+[sub_resource type="Resource" id="light_0"]
+script = ExtResource("3_al")
+position = Vector2(688, 45)
+color = Color(0.85, 1, 0.8, 1)
+texture_scale = 1.6
+
+[sub_resource type="Resource" id="light_1"]
+script = ExtResource("3_al")
+position = Vector2(255, 95)
+color = Color(1, 0.85, 0.5, 1)
+texture_scale = 0.9
+
+[sub_resource type="Resource" id="light_2"]
+script = ExtResource("3_al")
+position = Vector2(1000, 205)
+color = Color(1, 0.85, 0.5, 1)
+texture_scale = 1.0
+
+[sub_resource type="Resource" id="light_3"]
+script = ExtResource("3_al")
+position = Vector2(1265, 240)
+color = Color(1, 0.9, 0.55, 1)
+energy = 0.6
+texture_scale = 0.8
+
+[sub_resource type="Resource" id="light_4"]
+script = ExtResource("3_al")
+position = Vector2(135, 555)
+color = Color(1, 0.9, 0.55, 1)
+texture_scale = 0.8
+
+[sub_resource type="Resource" id="light_5"]
+script = ExtResource("3_al")
+position = Vector2(1205, 665)
+color = Color(1, 0.9, 0.55, 1)
+texture_scale = 0.8
+
+[sub_resource type="Resource" id="light_6"]
+script = ExtResource("3_al")
+position = Vector2(688, 890)
+color = Color(0.8, 1, 0.85, 1)
+energy = 0.6
+texture_scale = 1.4
+
+[sub_resource type="Resource" id="light_7"]
+script = ExtResource("3_al")
+position = Vector2(690, 560)
+color = Color(0.85, 0.9, 0.85, 1)
+energy = 0.3
+texture_scale = 2.0
+
+[resource]
+script = ExtResource("1_al")
+display_name = "Posto de enfermagem"
+background = ExtResource("2_bg")
+view_rect = Rect2(50, 20, 1270, 1020)
+blockers = Array[Rect2]([Rect2(0, 0, 1374, 205), Rect2(0, 0, 130, 520), Rect2(0, 520, 152, 235), Rect2(0, 750, 150, 395), Rect2(0, 950, 330, 195), Rect2(330, 965, 175, 180), Rect2(500, 862, 78, 95), Rect2(578, 868, 215, 277), Rect2(798, 862, 75, 95), Rect2(870, 968, 225, 177), Rect2(1090, 950, 284, 195), Rect2(1245, 0, 130, 1145), Rect2(330, 150, 185, 80), Rect2(140, 160, 55, 50), Rect2(110, 180, 140, 170), Rect2(138, 325, 70, 200), Rect2(208, 425, 50, 85), Rect2(68, 455, 45, 70), Rect2(212, 615, 55, 80), Rect2(215, 680, 35, 115), Rect2(272, 742, 70, 112), Rect2(148, 745, 70, 180), Rect2(222, 855, 60, 80), Rect2(375, 900, 70, 50), Rect2(908, 213, 60, 205), Rect2(908, 335, 250, 83), Rect2(833, 163, 60, 90), Rect2(1170, 225, 66, 80), Rect2(1208, 318, 35, 55), Rect2(1158, 520, 60, 115), Rect2(1125, 678, 62, 185), Rect2(972, 798, 120, 155), Rect2(895, 835, 60, 95), Rect2(1168, 825, 70, 115), Rect2(1170, 150, 70, 70)])
+player_start = Vector2(690, 560)
+exit_point = Vector2(688, 840)
+exit_into = Vector2(688, 1010)
+lights = Array[ExtResource("3_al")]([SubResource("light_0"), SubResource("light_1"), SubResource("light_2"), SubResource("light_3"), SubResource("light_4"), SubResource("light_5"), SubResource("light_6"), SubResource("light_7")])
+puddles = null

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/shop_item_data.gd" id="1_si"]
+
+[resource]
+script = ExtResource("1_si")
+id = &"coturno"
+display_name = "Coturno reforçado"
+description = "Pisa firme, pisa forte."
+kind = 1
+price = 28
+max_stacks = 3
+modifiers = {
+"armor": 1.5,
+"move_speed_pct": 4.0
+}

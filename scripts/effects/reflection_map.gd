@@ -11,6 +11,7 @@ const RED_THRESHOLD := 0.07  ## how much redder than green/blue a painted pixel 
 const UPLOAD_INTERVAL := 0.2  ## seconds between texture uploads while stains keep arriving
 
 var _img: Image
+var _base: Image  ## the map before any run-time blood, see snapshot()
 var _tex: ImageTexture
 var _dirty := false
 var _since := 0.0
@@ -46,6 +47,32 @@ func stamp_wet(world_pos: Vector2, radius: float, amount := 0.95) -> void:
 				px.g = amount
 				_img.set_pixel(x, y, px)
 				_dirty = true
+
+
+## Remembers the map as it is now (painted blood and water puddles in place), so reset_wet() can undo what comes after.
+func snapshot() -> void:
+	_base = _img.duplicate()
+
+
+## Rain: all the floor becomes at least this wet, and stays that way (the snapshot is soaked too, so the
+## end-of-wave blood clean-up does not dry it).
+func soak(amount: float) -> void:
+	for y in _img.get_height():
+		for x in _img.get_width():
+			var px := _img.get_pixel(x, y)
+			if px.r > 0.5 and px.g < amount:
+				px.g = amount
+				_img.set_pixel(x, y, px)
+	_base = _img.duplicate()
+	_tex.update(_img)
+
+
+## Dries the floor back to the snapshot: the blood that fell during the wave stops reflecting.
+func reset_wet() -> void:
+	if _base == null:
+		return
+	_img.copy_from(_base)
+	_tex.update(_img)
 
 
 func _process(delta: float) -> void:

@@ -9,3 +9,4 @@ extends Resource
 @export var damage_multiplier := 1.0
 @export var enemies: Array[EnemyData] = []  ## pool, picked by EnemyData.spawn_weight
 @export var ambience: AmbiencePreset  ## light, fog and lamp style of the wave
+@export var arena: ArenaLayout  ## the room this wave is fought in (the arena fades into it); empty = the same room as the previous wave

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SynergyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/synergy_data.gd" id="1_sy"]
+
+[resource]
+script = ExtResource("1_sy")
+id = &"chuva_de_chumbo"
+display_name = "Chuva de Chumbo"
+description = "Duas escopetas: dano e empurrão."
+requires = {
+"escopeta": 2
+}
+modifiers = {
+"damage_pct": 20.0,
+"knockback_pct": 60.0
+}
+color = Color(1.0, 0.55, 0.35, 1)

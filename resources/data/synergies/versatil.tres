@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SynergyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/synergy_data.gd" id="1_sy"]
+
+[resource]
+script = ExtResource("1_sy")
+id = &"versatil"
+display_name = "Versátil"
+description = "Uma arma branca e uma de fogo: mais ágil e com sorte."
+requires = {
+"branca": 1,
+"bala": 1
+}
+modifiers = {
+"move_speed_pct": 15.0,
+"luck": 10.0
+}
+color = Color(0.7, 0.9, 1.0, 1)

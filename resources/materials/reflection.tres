@@ -4,7 +4,7 @@
 
 [resource]
 shader = ExtResource("1")
-shader_parameter/alpha_dry = 0.5
-shader_parameter/alpha_wet = 0.9
-shader_parameter/fade_dry = 44.0
-shader_parameter/fade_wet = 70.0
+shader_parameter/alpha_dry = 0.22
+shader_parameter/alpha_wet = 0.5
+shader_parameter/fade_dry = 26.0
+shader_parameter/fade_wet = 46.0

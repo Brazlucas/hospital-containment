@@ -14,3 +14,7 @@ extends Resource
 @export var torch_scale := 1.0
 @export var ambient_flicker := true  ## the whole room dims for a blink now and then, like failing tubes
 @export var transition := 1.5  ## seconds to fade in from the previous atmosphere
+@export var loop_sfx := ""  ## background sound looped while the atmosphere lasts (file name in assets/audio/); empty = none
+@export var loop_volume_db := -12.0
+@export_range(0.0, 1.0) var rain := 0.0  ## 0 = dry; above 0 the floor is soaked and the rain shader fades in
+@export var lightning := false  ## a storm: flashes of lightning and thunder every few seconds

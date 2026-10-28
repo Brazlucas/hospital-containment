@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/weapon_data.gd" id="1_wd"]
+[ext_resource type="Texture2D" path="res://assets/sprites/weapons/hospital/h_machado.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_wd")
+id = &"h_machado"
+display_name = "Machado"
+kind = 1
+damage = 14
+cooldown = 0.8
+attack_range = 52.0
+knockback = 240.0
+crit_multiplier = 2
+shot_sfx = ""
+melee_reach = 44.0
+melee_arc_deg = 170.0
+swing_time = 0.15
+hit_sfx = ""
+icon = ExtResource("2_icon")
+icon_scale = 0.5
+icon_rotation_deg = 31.8
+icon_offset = Vector2(13, -1)
+tags = PackedStringArray("branca")

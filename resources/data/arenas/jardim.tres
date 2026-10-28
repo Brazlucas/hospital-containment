@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="ArenaLayout" format=3 uid="uid://cyg758pysm115"]
+
+[ext_resource type="Script" uid="uid://dm17l47yeqpei" path="res://scripts/data/arena_layout.gd" id="1_al"]
+[ext_resource type="Texture2D" uid="uid://bbhgof2gpr3lc" path="res://assets/arenas/jardim_2.png" id="2_bg"]
+[ext_resource type="Script" uid="uid://mrx0ff4f06m8" path="res://scripts/data/arena_light.gd" id="3_al"]
+
+[sub_resource type="Resource" id="light_0"]
+script = ExtResource("3_al")
+position = Vector2(688, 200)
+color = Color(0.7, 0.9, 1, 1)
+energy = 0.5
+texture_scale = 1.8
+
+[sub_resource type="Resource" id="light_1"]
+script = ExtResource("3_al")
+position = Vector2(940, 200)
+color = Color(1, 0.95, 0.7, 1)
+energy = 0.5
+texture_scale = 1.0
+
+[sub_resource type="Resource" id="light_2"]
+script = ExtResource("3_al")
+position = Vector2(1168, 370)
+color = Color(1, 0.95, 0.6, 1)
+energy = 0.8
+texture_scale = 1.0
+
+[sub_resource type="Resource" id="light_3"]
+script = ExtResource("3_al")
+position = Vector2(160, 650)
+color = Color(1, 0.95, 0.6, 1)
+texture_scale = 0.9
+
+[sub_resource type="Resource" id="light_4"]
+script = ExtResource("3_al")
+position = Vector2(685, 975)
+color = Color(0.8, 1, 0.85, 1)
+energy = 0.6
+texture_scale = 1.4
+
+[sub_resource type="Resource" id="light_5"]
+script = ExtResource("3_al")
+position = Vector2(690, 640)
+color = Color(0.85, 0.9, 0.9, 1)
+energy = 0.3
+texture_scale = 2.0
+
+[resource]
+script = ExtResource("1_al")
+display_name = "Jardim do hospital"
+background = ExtResource("2_bg")
+view_rect = Rect2(60, 25, 1260, 1020)
+blockers = Array[Rect2]([Rect2(0, 0, 820, 335), Rect2(820, 0, 270, 372), Rect2(1090, 0, 284, 360), Rect2(0, 0, 155, 600), Rect2(0, 600, 180, 265), Rect2(0, 872, 160, 273), Rect2(0, 1022, 1374, 123), Rect2(490, 958, 80, 62), Rect2(805, 958, 72, 62), Rect2(1296, 0, 78, 775), Rect2(1235, 775, 139, 370), Rect2(150, 310, 200, 135), Rect2(385, 310, 170, 50), Rect2(815, 335, 90, 65), Rect2(172, 775, 185, 245), Rect2(1095, 372, 160, 175), Rect2(1203, 495, 95, 172), Rect2(1105, 800, 125, 222)])
+player_start = Vector2(690, 640)
+exit_point = Vector2(685, 940)
+exit_into = Vector2(685, 1085)
+lights = Array[ExtResource("3_al")]([SubResource("light_0"), SubResource("light_1"), SubResource("light_2"), SubResource("light_3"), SubResource("light_4"), SubResource("light_5")])
+puddles = null

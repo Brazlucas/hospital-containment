@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/shop_item_data.gd" id="1_si"]
+
+[resource]
+script = ExtResource("1_si")
+id = &"adrenalina_injetavel"
+display_name = "Adrenalina injetável"
+description = "Dói, mas funciona."
+kind = 1
+price = 34
+max_stacks = 3
+modifiers = {
+"damage_pct": 12.0,
+"max_hp": -2.0
+}
+tags = PackedStringArray("quimico")

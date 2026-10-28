@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/weapon_data.gd" id="1_wd"]
+[ext_resource type="Texture2D" path="res://assets/sprites/weapons/hospital/h_raio.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_wd")
+id = &"h_raio"
+display_name = "Raio de energia"
+damage = 6
+cooldown = 0.7
+attack_range = 260.0
+knockback = 90.0
+crit_multiplier = 2.5
+shot_sfx = ""
+projectile_speed = 900.0
+spread_deg = 0.0
+pierce = 4
+firearm = false
+projectile_color = Color(1.0, 0.3, 0.22, 1)
+projectile_size = 1.8
+icon = ExtResource("2_icon")
+icon_scale = 0.5
+icon_rotation_deg = 0.0
+icon_offset = Vector2(3, 0)
+muzzle_offset = Vector2(14, -2)
+tags = PackedStringArray("energia")

@@ -1,22 +1,27 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://06fefwmy5iv"]
 
-[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_ed"]
+[ext_resource type="Script" uid="uid://byspjuwgmpxqm" path="res://scripts/data/enemy_data.gd" id="1_ed"]
 [ext_resource type="SpriteFrames" path="res://resources/enemy/doctor_frames.tres" id="2_fr"]
 
 [resource]
 script = ExtResource("1_ed")
 id = &"zumbi_medico"
-display_name = "Médico infectado"
+display_name = "Médico arremessador"
 frames = ExtResource("2_fr")
-sprite_scale = 1.3
-contact_range = 18.0
-max_hp = 10.0
+sprite_scale = 1.2
 speed = 50.0
 contact_damage = 2.0
-materials = 2
+contact_range = 18.0
+attack_cooldown = 0.85
+lunge_range = 90.0
+drop_chance = 0.8
 hit_height = 28.0
 hit_radius = 11.0
 spawn_weight = 3.0
-attack_cooldown = 0.85
-lunge_range = 90.0
-lunge_speed_mult = 1.4
+throw_chance = 1.0
+throw_damage = 1.5
+throw_range = 170.0
+throw_hold = 95.0
+throw_cooldown = 2.6
+throw_windup = 0.45
+throw_speed = 150.0

@@ -9,7 +9,8 @@ const CARD_SIZE := Vector2(110, 150)
 const PAD := 12.0  ## transparent margin around the card, so a tilted card and its shadow stay inside the quad
 const FULL := CARD_SIZE + Vector2(PAD, PAD) * 2.0
 const SHADER: Shader = preload("res://scripts/ui/card.gdshader")
-const FONT_SMALL := 8
+const FONT_SMALL := 9
+const FACE_SUPERSAMPLE := 3  ## the face is rendered this many times larger so its text stays sharp at window resolution
 const FONT_TEXT := 10
 const POSITIVE := Color(0.55, 0.95, 0.6)
 const NEGATIVE := Color(1.0, 0.5, 0.5)
@@ -71,7 +72,9 @@ func _build_face() -> void:
 	var tier := offer.tier
 	var accent: Color = Rarity.ACCENTS[tier]
 	_viewport = SubViewport.new()
-	_viewport.size = Vector2i(FULL)
+	_viewport.size = Vector2i(FULL) * FACE_SUPERSAMPLE
+	_viewport.size_2d_override = Vector2i(FULL)
+	_viewport.size_2d_override_stretch = true
 	_viewport.transparent_bg = true
 	_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	add_child(_viewport)

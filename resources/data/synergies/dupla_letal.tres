@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SynergyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/synergy_data.gd" id="1_sy"]
+
+[resource]
+script = ExtResource("1_sy")
+id = &"dupla_letal"
+display_name = "Dupla Letal"
+description = "Duas pistolas atiram mais rápido."
+requires = {
+"pistola": 2
+}
+modifiers = {
+"attack_speed_pct": 30.0
+}
+color = Color(1.0, 0.75, 0.3, 1)

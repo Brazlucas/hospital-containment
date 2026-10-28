@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/shop_item_data.gd" id="1_si"]
+
+[resource]
+script = ExtResource("1_si")
+id = &"bolsa_de_soro"
+display_name = "Bolsa de soro"
+description = "Pingando devagar na veia."
+kind = 1
+price = 26
+max_stacks = 4
+modifiers = {
+"hp_regen": 0.4
+}
+tags = PackedStringArray("medico")

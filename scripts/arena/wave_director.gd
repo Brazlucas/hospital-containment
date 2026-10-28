@@ -17,6 +17,7 @@ var _player: Player
 var _holder: Node2D
 var _time_left := 0.0
 var _spawn_in := 0.0
+var paused := false  ## trainer: freezes the clock and the spawns (enemies already out keep moving)
 var _running := false
 var _markers := 0  ## telegraphs in flight
 
@@ -29,7 +30,15 @@ func start(wave: WaveData, arena: Arena, player: Player, holder: Node2D) -> void
 	_time_left = wave.duration
 	_spawn_in = 0.5
 	_running = true
+	paused = false
 	Events.wave_time_changed.emit(_time_left)
+
+
+## Trainer: ends the running wave on the next frame.
+func finish_now() -> void:
+	if _running:
+		paused = false
+		_time_left = 0.0
 
 
 func stop() -> void:
@@ -37,7 +46,7 @@ func stop() -> void:
 
 
 func _process(delta: float) -> void:
-	if not _running:
+	if not _running or paused:
 		return
 	_time_left -= delta
 	Events.wave_time_changed.emit(maxf(_time_left, 0.0))

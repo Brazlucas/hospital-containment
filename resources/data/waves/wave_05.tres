@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="WaveData" load_steps=5 format=3]
+[gd_resource type="Resource" script_class="WaveData" load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/data/wave_data.gd" id="1_wv"]
 [ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="2_ed"]
 [ext_resource type="Resource" path="res://resources/data/enemies/zumbi_medico.tres" id="3_med"]
 [ext_resource type="Resource" path="res://resources/data/enemies/rastejante.tres" id="4_cra"]
+[ext_resource type="Resource" path="res://resources/data/enemies/fantasma_medico.tres" id="9_gh"]
 
 [ext_resource type="Resource" path="res://resources/data/ambience/surto.tres" id="5_amb"]
+[ext_resource type="Resource" path="res://resources/data/arenas/psiquiatria.tres" id="10_arena"]
 
 [resource]
 script = ExtResource("1_wv")
@@ -14,5 +16,6 @@ spawn_interval = 0.85
 group_size = 4
 hp_multiplier = 1.7
 damage_multiplier = 1.3
-enemies = Array[ExtResource("2_ed")]([ExtResource("3_med"), ExtResource("4_cra")])
+enemies = Array[ExtResource("2_ed")]([ExtResource("3_med"), ExtResource("4_cra"), ExtResource("9_gh")])
 ambience = ExtResource("5_amb")
+arena = ExtResource("10_arena")

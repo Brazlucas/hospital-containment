@@ -50,6 +50,8 @@ func apply(preset: AmbiencePreset, instant := false) -> void:
 		_tween.tween_property(_fog, "color", preset.fog_color, t)
 		_tween.tween_property(_torch, "energy", preset.torch_energy, t)
 		_tween.tween_property(_torch, "texture_scale", preset.torch_scale, t)
+	AudioManager.play_ambient_loop(preset.loop_sfx, preset.loop_volume_db, preset.transition)
+	Events.weather_changed.emit(preset.rain, preset.lightning)
 	Events.ambience_changed.emit(preset.display_name)
 
 

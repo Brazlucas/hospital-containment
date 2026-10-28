@@ -1,57 +1,72 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene format=3 uid="uid://kvyj63qg8lyc"]
 
-[ext_resource type="Script" path="res://scripts/arena/arena.gd" id="1_arena"]
-[ext_resource type="Script" path="res://scripts/arena/wave_director.gd" id="3_dir"]
+[ext_resource type="Script" uid="uid://ifgt1lkrhs6" path="res://scripts/arena/arena.gd" id="1_arena"]
+[ext_resource type="Script" uid="uid://bowcrtf3lt4ch" path="res://scripts/arena/wave_director.gd" id="3_dir"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="4_hud"]
 [ext_resource type="PackedScene" path="res://scenes/ui/upgrade_screen.tscn" id="5_up"]
 [ext_resource type="Resource" path="res://resources/data/characters/paciente.tres" id="6_char"]
-[ext_resource type="Script" path="res://scripts/data/wave_data.gd" id="7_wd"]
+[ext_resource type="Script" uid="uid://cxyh7tge8hvyk" path="res://scripts/data/wave_data.gd" id="7_wd"]
 [ext_resource type="Resource" path="res://resources/data/waves/wave_01.tres" id="8_w1"]
 [ext_resource type="Resource" path="res://resources/data/waves/wave_02.tres" id="9_w2"]
 [ext_resource type="Resource" path="res://resources/data/waves/wave_03.tres" id="10_w3"]
 [ext_resource type="Resource" path="res://resources/data/waves/wave_04.tres" id="11_w4"]
 [ext_resource type="Resource" path="res://resources/data/waves/wave_05.tres" id="12_w5"]
-[ext_resource type="Resource" path="res://resources/data/arenas/enfermaria.tres" id="13_layout"]
+[ext_resource type="Resource" path="res://resources/data/waves/wave_06.tres" id="19_w6"]
+[ext_resource type="Script" path="res://scripts/effects/weather.gd" id="20_weather"]
+[ext_resource type="Resource" uid="uid://ofq7ofm5ri7t" path="res://resources/data/arenas/enfermaria.tres" id="13_layout"]
 [ext_resource type="PackedScene" path="res://scenes/effects/fog.tscn" id="14_fog"]
-[ext_resource type="Script" path="res://scripts/effects/ambience_director.gd" id="15_amb"]
+[ext_resource type="Script" uid="uid://b8gkh7o4imyag" path="res://scripts/effects/ambience_director.gd" id="15_amb"]
+[ext_resource type="PackedScene" path="res://scenes/ui/shop_screen.tscn" id="16_shop"]
+[ext_resource type="Script" uid="uid://iteer01qyojt" path="res://scripts/debug/trainer.gd" id="17_trainer"]
+[ext_resource type="Script" uid="uid://cyuxtem28xdc" path="res://scripts/ui/pain_overlay.gd" id="18_pain"]
 
-[node name="Arena" type="Node2D"]
+[node name="Arena" type="Node2D" unique_id=939167081]
 script = ExtResource("1_arena")
 character = ExtResource("6_char")
 layout = ExtResource("13_layout")
-waves = Array[ExtResource("7_wd")]([ExtResource("8_w1"), ExtResource("9_w2"), ExtResource("10_w3"), ExtResource("11_w4"), ExtResource("12_w5")])
+waves = Array[ExtResource("7_wd")]([ExtResource("8_w1"), ExtResource("9_w2"), ExtResource("10_w3"), ExtResource("11_w4"), ExtResource("12_w5"), ExtResource("19_w6")])
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=430145222]
 z_index = -100
 texture_filter = 4
 centered = false
 
-[node name="Ambient" type="CanvasModulate" parent="."]
+[node name="Ambient" type="CanvasModulate" parent="." unique_id=916324590]
 
-[node name="Decals" type="Node2D" parent="." groups=["decals"]]
+[node name="Decals" type="Node2D" parent="." unique_id=506478123 groups=["decals"]]
 z_index = -50
 
-[node name="Walls" type="StaticBody2D" parent="."]
-collision_layer = 1
+[node name="Walls" type="StaticBody2D" parent="." unique_id=2043667964]
 collision_mask = 0
 
-[node name="Entities" type="Node2D" parent="."]
+[node name="Entities" type="Node2D" parent="." unique_id=552456358]
 y_sort_enabled = true
 
-[node name="WaveDirector" type="Node" parent="."]
+[node name="WaveDirector" type="Node" parent="." unique_id=989825268]
 script = ExtResource("3_dir")
 
-[node name="HUD" parent="." instance=ExtResource("4_hud")]
+[node name="HUD" parent="." unique_id=1959647446 instance=ExtResource("4_hud")]
 
-[node name="UpgradeScreen" parent="." instance=ExtResource("5_up")]
+[node name="UpgradeScreen" parent="." unique_id=555010335 instance=ExtResource("5_up")]
 
-[node name="Lights" type="Node2D" parent="."]
+[node name="ShopScreen" parent="." unique_id=1013204999 instance=ExtResource("16_shop")]
 
-[node name="Puddles" type="Node2D" parent="."]
+[node name="Weather" type="CanvasLayer" parent="."]
+script = ExtResource("20_weather")
 
-[node name="Fog" parent="." instance=ExtResource("14_fog")]
+[node name="PainOverlay" type="CanvasLayer" parent="." unique_id=2061517096]
+script = ExtResource("18_pain")
 
-[node name="Dust" type="CPUParticles2D" parent="."]
+[node name="Trainer" type="CanvasLayer" parent="." unique_id=697432488]
+script = ExtResource("17_trainer")
+
+[node name="Lights" type="Node2D" parent="." unique_id=572332207]
+
+[node name="Puddles" type="Node2D" parent="." unique_id=378804351]
+
+[node name="Fog" parent="." unique_id=551568085 instance=ExtResource("14_fog")]
+
+[node name="Dust" type="CPUParticles2D" parent="." unique_id=630850729]
 z_index = 20
 amount = 80
 lifetime = 8.0
@@ -67,5 +82,5 @@ scale_amount_min = 0.6
 scale_amount_max = 1.2
 color = Color(0.7, 0.75, 0.7, 0.25)
 
-[node name="Ambience" type="Node" parent="."]
+[node name="Ambience" type="Node" parent="." unique_id=42601339]
 script = ExtResource("15_amb")

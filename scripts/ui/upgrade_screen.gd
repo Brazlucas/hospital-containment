@@ -1,13 +1,15 @@
 extends CanvasLayer
-## Level-up picks between waves: one offer of 3 cards per level gained during the wave. Each card is an upgrade at a
+## Skill picks after every finished wave: PICKS_PER_WAVE offers of 3 cards, like Brotato. Each card is an upgrade at a
 ## rarity (see Rarity): rarer cards give bigger bonuses and shimmer more. The pool is every .tres in resources/data/upgrades/.
 
 signal finished
 
 const CHOICES := 3
+const PICKS_PER_WAVE := 2
 const UPGRADES_DIR := "res://resources/data/upgrades"
 
 var _pool: Array[UpgradeData] = []
+var _picks_left := 0
 var _title: Label
 var _cards: HBoxContainer
 
@@ -20,11 +22,9 @@ func _ready() -> void:
 	_build_ui()
 
 
-## Starts the picks, or just emits `finished` when no level was gained.
+## Starts the picks of the wave that just ended.
 func open() -> void:
-	if RunState.pending_levels <= 0:
-		finished.emit()
-		return
+	_picks_left = PICKS_PER_WAVE
 	visible = true
 	_offer()
 
@@ -53,7 +53,7 @@ func _offer() -> void:
 	for c in _cards.get_children():
 		_cards.remove_child(c)
 		c.queue_free()
-	_title.text = "NÍVEL %d  ·  escolha uma melhoria" % (RunState.level - RunState.pending_levels + 1)
+	_title.text = "ONDA %d CONCLUÍDA  ·  escolha uma habilidade (%d/%d)" % [RunState.wave, PICKS_PER_WAVE - _picks_left + 1, PICKS_PER_WAVE]
 	var offers := _roll()
 	for i in offers.size():
 		var card := UpgradeCard.new()
@@ -89,8 +89,8 @@ func _roll() -> Array[UpgradeOffer]:
 
 func _pick(offer: UpgradeOffer) -> void:
 	RunState.take_upgrade(offer.upgrade, offer.tier)
-	RunState.pending_levels -= 1
-	if RunState.pending_levels > 0:
+	_picks_left -= 1
+	if _picks_left > 0:
 		_offer()
 	else:
 		visible = false

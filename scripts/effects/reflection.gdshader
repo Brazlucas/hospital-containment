@@ -8,10 +8,10 @@ shader_type canvas_item;
 uniform sampler2D refl_map : filter_linear, repeat_disable;  // R = floor, G = wetness (see ReflectionMap)
 uniform vec2 map_origin = vec2(0.0);          // world px of the map's top-left corner
 uniform vec2 map_size = vec2(640.0, 480.0);   // world px the map covers
-uniform float alpha_dry : hint_range(0.0, 1.0) = 0.4;
-uniform float alpha_wet : hint_range(0.0, 1.0) = 0.9;
-uniform float fade_dry = 38.0;                // source px below the feet until a dry reflection is gone
-uniform float fade_wet = 70.0;
+uniform float alpha_dry : hint_range(0.0, 1.0) = 0.22;
+uniform float alpha_wet : hint_range(0.0, 1.0) = 0.5;
+uniform float fade_dry = 26.0;                // source px below the feet until a dry reflection is gone
+uniform float fade_wet = 46.0;
 
 varying vec2 world_pos;
 
@@ -37,6 +37,7 @@ void fragment() {
 
 	float lum = dot(tex.rgb, vec3(0.299, 0.587, 0.114));
 	vec3 col = mix(vec3(lum), tex.rgb, 0.8) * vec3(0.9, 0.97, 1.0);
+	col *= 0.7;  // a reflection is darker than the object, most of all in a dark room
 	col = floor(col * 10.0 + 0.5) / 10.0;
 	float a = tex.a * mix(alpha_dry, alpha_wet, smoothstep(0.0, 0.6, wet)) * fade;
 	a = floor(a * 5.0 + 0.5) / 5.0;  // hard alpha bands

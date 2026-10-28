@@ -40,6 +40,7 @@ func setup(d: WeaponData, player: Player) -> void:
 	_art.position = d.icon_offset
 	_art.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if d.icon_scale < 1.0 else CanvasItem.TEXTURE_FILTER_NEAREST
 	_hand.position = Vector2(HOLD_DISTANCE, 0)
+	_muzzle.position = d.muzzle_offset
 	_aim = slot_angle
 	_swing = _rest_swing()
 	rotation = _aim + _swing
@@ -93,14 +94,17 @@ func _fire(target: Enemy) -> void:
 		var p: Projectile = PROJECTILE.instantiate()
 		_player.get_parent().add_child(p)
 		p.launch(origin, aim + deg_to_rad(randf_range(-data.spread_deg, data.spread_deg)), data, damage, crit, attack_range())
-	_muzzle_flash(origin, aim)
-	_flash_light.global_position = origin
-	_flash_light.energy = 1.6
-	if _flash_tween:
-		_flash_tween.kill()
-	_flash_tween = create_tween()
-	_flash_tween.tween_property(_flash_light, "energy", 0.0, 0.1)
-	AudioManager.play_sfx(data.shot_sfx, -6.0, 0.08)
+	if data.firearm:
+		_muzzle_flash(origin, aim)
+		Shell.eject(_player.get_parent(), _hand.global_position, aim, data)
+		_flash_light.global_position = origin
+		_flash_light.energy = 1.6
+		if _flash_tween:
+			_flash_tween.kill()
+		_flash_tween = create_tween()
+		_flash_tween.tween_property(_flash_light, "energy", 0.0, 0.1)
+	if data.shot_sfx != "":
+		AudioManager.play_sfx(data.shot_sfx, -10.0, 0.08)
 	_player.shake(0.6, 0.06)
 	if _recoil_tween:
 		_recoil_tween.kill()
@@ -139,7 +143,8 @@ func _rest_swing() -> float:
 func _swing_at() -> void:
 	_swinging = true
 	var half := deg_to_rad(data.melee_arc_deg) * 0.5
-	AudioManager.play_sfx(data.shot_sfx, -4.0, 0.1)
+	if data.shot_sfx != "":
+		AudioManager.play_sfx(data.shot_sfx, -4.0, 0.1)
 	var tw := create_tween()
 	tw.tween_property(self, "_swing", -half, 0.06).set_ease(Tween.EASE_OUT)
 	tw.tween_property(self, "_swing", 0.0, data.swing_time * 0.5).set_ease(Tween.EASE_IN)
@@ -167,11 +172,13 @@ func _melee_hit() -> void:
 			continue
 		if dist > POINT_BLANK and absf(angle_difference(_aim, to.angle())) > half:
 			continue
-		e.take_damage(damage, global_position, crit, data.knockback)
+		e.take_damage(damage, global_position, crit, data.knockback * stats.mult("knockback_pct"))
 		hits += 1
 	_slash_trail(reach, half)
+	_wind_streaks(reach, half)
 	if hits > 0:
-		AudioManager.play_sfx(data.hit_sfx, -2.0, 0.1)
+		if data.hit_sfx != "":
+			AudioManager.play_sfx(data.hit_sfx, -2.0, 0.1)
 		_player.shake(1.2 + minf(hits, 4) * 0.4, 0.1)
 
 
@@ -193,3 +200,29 @@ func _slash_trail(reach: float, half: float) -> void:
 	var tw := line.create_tween()
 	tw.tween_property(line, "modulate:a", 0.0, 0.16)
 	tw.tween_callback(line.queue_free)
+
+
+## A few thin, faint arcs of air around the blow, each covering part of the swing, that fade out fast.
+func _wind_streaks(reach: float, half: float) -> void:
+	var taper := Curve.new()
+	taper.add_point(Vector2(0.0, 0.0))
+	taper.add_point(Vector2(0.5, 1.0))
+	taper.add_point(Vector2(1.0, 0.0))
+	for radius_k in [0.62, 0.8, 1.02]:
+		var from := randf_range(0.0, 0.35)
+		var to := randf_range(0.65, 1.0)
+		var line := Line2D.new()
+		line.width = 1.5
+		line.width_curve = taper
+		line.default_color = Color(1.0, 1.0, 1.0, 0.3)
+		line.material = UNSHADED
+		line.z_index = 5
+		for i in 9:
+			var k := lerpf(from, to, i / 8.0)
+			var a := _aim - half * _swing_sign + 2.0 * half * _swing_sign * k
+			line.add_point(global_position + Vector2.from_angle(a) * reach * radius_k)
+		_player.get_parent().add_child(line)
+		var tw := line.create_tween()
+		tw.tween_property(line, "modulate:a", 0.0, 0.22)
+		tw.tween_callback(line.queue_free)
+

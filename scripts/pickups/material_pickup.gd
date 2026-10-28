@@ -5,6 +5,16 @@ extends Node2D
 
 const BASE_MAGNET := 36.0  ## px at +0% pickup range
 const PICKUP_RANGE := 8.0
+const LIGHT_TEX: Texture2D = preload("res://resources/textures/light_radial.tres")
+const ADDITIVE: Material = preload("res://resources/materials/additive.tres")
+const GLOW_COLOR := Color(1.0, 0.85, 0.3, 0.13)  ## a very faint yellow halo
+const GLOW_SIZE := 0.09  ## of the 256 px light texture
+const CHAIN_WINDOW := 0.5  ## seconds between pickups that still count as one chain
+const CHAIN_STEP := 0.05  ## pitch added per pickup in the chain
+const CHAIN_MAX := 12
+
+static var _chain := 0
+static var _last_pickup := 0.0
 
 @export var value := 1
 
@@ -12,6 +22,7 @@ var _landed := false
 var _collected := false
 var _vacuum := false
 var _toss_tween: Tween
+var _glow: Sprite2D
 
 @onready var _sprite: AnimatedSprite2D = $Sprite
 @onready var _shadow: Sprite2D = $Shadow
@@ -21,6 +32,16 @@ func _ready() -> void:
 	add_to_group("materials")
 	_sprite.play("spin")
 	_sprite.frame = randi() % _sprite.sprite_frames.get_frame_count("spin")
+	_glow = Sprite2D.new()
+	_glow.texture = LIGHT_TEX
+	_glow.material = ADDITIVE
+	_glow.modulate = GLOW_COLOR
+	_glow.scale = Vector2.ONE * GLOW_SIZE
+	_glow.show_behind_parent = true  # the coin is drawn over its own glow
+	_sprite.add_child(_glow)  # child of the coin sprite, so it follows the toss arc
+	var pulse := _glow.create_tween().set_loops()
+	pulse.tween_property(_glow, "scale", Vector2.ONE * GLOW_SIZE * 1.18, 0.9).set_trans(Tween.TRANS_SINE).set_delay(randf() * 0.5)
+	pulse.tween_property(_glow, "scale", Vector2.ONE * GLOW_SIZE, 0.9).set_trans(Tween.TRANS_SINE)
 
 
 ## Throws the pickup from where it is to `landing` (world coords) in an arc.
@@ -72,8 +93,12 @@ func _process(delta: float) -> void:
 func _collect() -> void:
 	_collected = true
 	RunState.add_materials(value)
-	AudioManager.play_sfx("blip", -14.0, 0.1)
+	var now := Time.get_ticks_msec() / 1000.0
+	_chain = 1 if now - _last_pickup > CHAIN_WINDOW else mini(_chain + 1, CHAIN_MAX)
+	_last_pickup = now
+	AudioManager.play_sfx("blip", -14.0, 0.02, 1.0 + (_chain - 1) * CHAIN_STEP)  # a run of coins climbs the scale
 	_shadow.visible = false
+	_glow.visible = false
 	_sprite.play("collect")  # sparkle burst, then it disappears
 	await _sprite.animation_finished
 	queue_free()

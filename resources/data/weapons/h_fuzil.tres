@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/weapon_data.gd" id="1_wd"]
+[ext_resource type="Texture2D" path="res://assets/sprites/weapons/hospital/h_fuzil.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_wd")
+id = &"h_fuzil"
+display_name = "Fuzil"
+damage = 2.6
+cooldown = 0.15
+attack_range = 210.0
+knockback = 30.0
+crit_multiplier = 2
+shot_sfx = "ak47_shot"
+projectile_speed = 500.0
+spread_deg = 3.5
+projectile_size = 1
+icon = ExtResource("2_icon")
+icon_scale = 0.5
+icon_rotation_deg = 0.0
+icon_offset = Vector2(6, 0)
+muzzle_offset = Vector2(26, -3)
+tags = PackedStringArray("bala", "fuzil")

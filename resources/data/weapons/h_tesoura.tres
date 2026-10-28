@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/weapon_data.gd" id="1_wd"]
+[ext_resource type="Texture2D" path="res://assets/sprites/weapons/hospital/h_tesoura.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_wd")
+id = &"h_tesoura"
+display_name = "Tesoura médica"
+kind = 1
+damage = 7
+cooldown = 0.38
+attack_range = 45.0
+knockback = 90.0
+crit_multiplier = 2.8
+shot_sfx = ""
+melee_reach = 37.0
+melee_arc_deg = 80.0
+swing_time = 0.1
+hit_sfx = ""
+icon = ExtResource("2_icon")
+icon_scale = 0.5
+icon_rotation_deg = -143.7
+icon_offset = Vector2(8, 1)
+tags = PackedStringArray("branca", "medico")

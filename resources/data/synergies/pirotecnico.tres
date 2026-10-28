@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SynergyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/synergy_data.gd" id="1_sy"]
+
+[resource]
+script = ExtResource("1_sy")
+id = &"pirotecnico"
+display_name = "Pirotécnico"
+description = "Dois explosivos: explosões maiores e mais dano."
+requires = {
+"explosivo": 2
+}
+modifiers = {
+"explosion_pct": 40.0,
+"damage_pct": 15.0
+}
+color = Color(1.0, 0.6, 0.25, 1)

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/weapon_data.gd" id="1_wd"]
+[ext_resource type="Texture2D" path="res://assets/sprites/weapons/hospital/h_lanca_chamas.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_wd")
+id = &"h_lanca_chamas"
+display_name = "Lança-chamas"
+damage = 0.5
+cooldown = 0.09
+attack_range = 95.0
+knockback = 10.0
+crit_multiplier = 2
+shot_sfx = ""
+projectile_speed = 220.0
+spread_deg = 16.0
+projectiles = 2
+pierce = 2
+firearm = false
+projectile_color = Color(1.0, 0.55, 0.25, 1)
+projectile_size = 1.6
+icon = ExtResource("2_icon")
+icon_scale = 0.5
+icon_rotation_deg = 0.0
+icon_offset = Vector2(5, 0)
+muzzle_offset = Vector2(23, 1)
+tags = PackedStringArray("chama")

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/weapon_data.gd" id="1_wd"]
+[ext_resource type="Texture2D" path="res://assets/sprites/weapons/hospital/h_mina.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_wd")
+id = &"h_mina"
+display_name = "Mina"
+damage = 25
+cooldown = 2.5
+attack_range = 70.0
+knockback = 300.0
+crit_multiplier = 2
+shot_sfx = ""
+projectile_speed = 70.0
+spread_deg = 0.0
+explosion_radius = 50.0
+firearm = false
+projectile_color = Color(1.0, 0.35, 0.28, 1)
+projectile_size = 2.2
+icon = ExtResource("2_icon")
+icon_scale = 0.5
+icon_rotation_deg = 0.0
+icon_offset = Vector2(4, 0)
+muzzle_offset = Vector2(11, 0)
+tags = PackedStringArray("explosivo")

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://cb8m7by2h05d4"]
 
-[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1_ed"]
+[ext_resource type="Script" uid="uid://byspjuwgmpxqm" path="res://scripts/data/enemy_data.gd" id="1_ed"]
 [ext_resource type="SpriteFrames" path="res://resources/enemy/crawler_frames.tres" id="2_fr"]
 
 [resource]
@@ -8,15 +8,19 @@ script = ExtResource("1_ed")
 id = &"rastejante"
 display_name = "Rastejante"
 frames = ExtResource("2_fr")
-sprite_scale = 1.1
 max_hp = 5.0
 speed = 78.0
-contact_damage = 1.0
 contact_range = 15.0
-materials = 1
-hit_height = 10.0
-hit_radius = 9.0
-spawn_weight = 2.0
 attack_cooldown = 0.75
 lunge_range = 120.0
 lunge_speed_mult = 1.5
+drop_chance = 0.5
+hit_height = 10.0
+spawn_weight = 2.0
+throw_chance = 0.3
+throw_kind = 1
+throw_range = 120.0
+throw_hold = 70.0
+throw_cooldown = 2.2
+throw_windup = 0.35
+throw_speed = 130.0

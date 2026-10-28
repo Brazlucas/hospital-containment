@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/shop_item_data.gd" id="1_si"]
+[ext_resource type="Resource" path="res://resources/data/weapons/h_granada.tres" id="2_w"]
+
+[resource]
+script = ExtResource("1_si")
+id = &"h_granada"
+display_name = "Granada"
+description = "Explode em área."
+kind = 0
+price = 62
+weight = 0.2
+weapon = ExtResource("2_w")

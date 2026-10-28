@@ -1,0 +1,109 @@
+[gd_resource type="Resource" script_class="ArenaLayout" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/arena_layout.gd" id="1_al"]
+[ext_resource type="Texture2D" path="res://assets/arenas/heliporto.png" id="2_bg"]
+[ext_resource type="Script" path="res://scripts/data/arena_light.gd" id="3_al"]
+
+[sub_resource type="Resource" id="light_0"]
+script = ExtResource("3_al")
+position = Vector2(688, 85)
+color = Color(0.8, 1.0, 0.85, 1)
+energy = 0.7
+texture_scale = 1.5
+
+[sub_resource type="Resource" id="light_1"]
+script = ExtResource("3_al")
+position = Vector2(688, 975)
+color = Color(0.8, 1.0, 0.85, 1)
+energy = 0.6
+texture_scale = 1.3
+
+[sub_resource type="Resource" id="light_2"]
+script = ExtResource("3_al")
+position = Vector2(150, 255)
+color = Color(1.0, 0.8, 0.4, 1)
+energy = 0.7
+texture_scale = 0.9
+
+[sub_resource type="Resource" id="light_3"]
+script = ExtResource("3_al")
+position = Vector2(160, 625)
+color = Color(1.0, 0.8, 0.4, 1)
+energy = 0.7
+texture_scale = 0.8
+
+[sub_resource type="Resource" id="light_4"]
+script = ExtResource("3_al")
+position = Vector2(990, 330)
+color = Color(1.0, 0.85, 0.4, 1)
+energy = 0.45
+texture_scale = 0.6
+
+[sub_resource type="Resource" id="light_5"]
+script = ExtResource("3_al")
+position = Vector2(1200, 330)
+color = Color(1.0, 0.85, 0.4, 1)
+energy = 0.45
+texture_scale = 0.6
+
+[sub_resource type="Resource" id="light_6"]
+script = ExtResource("3_al")
+position = Vector2(995, 540)
+color = Color(1.0, 0.85, 0.4, 1)
+energy = 0.45
+texture_scale = 0.6
+
+[sub_resource type="Resource" id="light_7"]
+script = ExtResource("3_al")
+position = Vector2(1205, 540)
+color = Color(1.0, 0.85, 0.4, 1)
+energy = 0.45
+texture_scale = 0.6
+
+[sub_resource type="Resource" id="light_8"]
+script = ExtResource("3_al")
+position = Vector2(925, 272)
+color = Color(1.0, 0.2, 0.15, 1)
+energy = 0.5
+texture_scale = 0.6
+
+[sub_resource type="Resource" id="light_9"]
+script = ExtResource("3_al")
+position = Vector2(1265, 272)
+color = Color(1.0, 0.2, 0.15, 1)
+energy = 0.5
+texture_scale = 0.6
+
+[sub_resource type="Resource" id="light_10"]
+script = ExtResource("3_al")
+position = Vector2(925, 585)
+color = Color(1.0, 0.2, 0.15, 1)
+energy = 0.5
+texture_scale = 0.6
+
+[sub_resource type="Resource" id="light_11"]
+script = ExtResource("3_al")
+position = Vector2(1270, 585)
+color = Color(1.0, 0.2, 0.15, 1)
+energy = 0.5
+texture_scale = 0.6
+
+[sub_resource type="Resource" id="light_12"]
+script = ExtResource("3_al")
+position = Vector2(690, 560)
+color = Color(0.6, 0.7, 0.85, 1)
+energy = 0.3
+texture_scale = 2.0
+
+[resource]
+script = ExtResource("1_al")
+display_name = "Heliporto"
+background = ExtResource("2_bg")
+art_scale = 0.5
+view_rect = Rect2(50, 25, 1265, 990)
+blockers = Array[Rect2]([Rect2(0, 0, 1374, 198), Rect2(0, 0, 178, 1145), Rect2(1275, 0, 99, 620), Rect2(1245, 620, 129, 525), Rect2(0, 992, 1374, 153), Rect2(520, 955, 62, 60), Rect2(795, 955, 62, 60), Rect2(582, 958, 216, 187), Rect2(190, 190, 140, 90), Rect2(176, 300, 70, 165), Rect2(178, 590, 175, 155), Rect2(178, 532, 90, 80), Rect2(262, 568, 210, 25), Rect2(380, 625, 45, 85), Rect2(305, 765, 75, 75), Rect2(203, 832, 225, 130), Rect2(375, 925, 85, 75), Rect2(893, 168, 110, 70), Rect2(1010, 180, 32, 40), Rect2(828, 140, 55, 115), Rect2(745, 165, 60, 50), Rect2(398, 168, 108, 70), Rect2(1050, 190, 145, 30), Rect2(955, 812, 157, 140), Rect2(1143, 808, 95, 115), Rect2(1130, 615, 105, 185), Rect2(1052, 752, 60, 60)])
+player_start = Vector2(690, 560)
+exit_point = Vector2(688, 930)
+exit_into = Vector2(688, 1075)
+puddles = PackedVector3Array(455, 350, 45, 690, 470, 55, 440, 700, 50, 990, 650, 40)
+lights = Array[ExtResource("3_al")]([SubResource("light_0"), SubResource("light_1"), SubResource("light_2"), SubResource("light_3"), SubResource("light_4"), SubResource("light_5"), SubResource("light_6"), SubResource("light_7"), SubResource("light_8"), SubResource("light_9"), SubResource("light_10"), SubResource("light_11"), SubResource("light_12")])

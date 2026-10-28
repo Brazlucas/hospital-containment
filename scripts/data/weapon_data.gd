@@ -7,6 +7,7 @@ enum Kind { RANGED, MELEE }
 
 @export var id: StringName
 @export var display_name := ""
+@export var tags: PackedStringArray = []  ## families for synergies ("bala", "branca", "pistola"...), see SynergyData
 @export var kind := Kind.RANGED
 @export var damage := 4.0
 @export var cooldown := 0.55  ## seconds between attacks at +0% attack speed
@@ -20,6 +21,10 @@ enum Kind { RANGED, MELEE }
 @export var projectiles := 1  ## bullets per shot
 @export var spread_deg := 2.0  ## random cone half-angle
 @export var pierce := 0  ## extra enemies a bullet goes through
+@export var explosion_radius := 0.0  ## px; above 0 the shot bursts where it ends (first enemy hit or end of range) and hurts everything inside
+@export var projectile_color := Color(1.0, 0.85, 0.4)
+@export var projectile_size := 1.0
+@export var firearm := true  ## muzzle flash, light and an ejected cartridge; off for grenades, flames, needles and the like
 
 @export_group("Melee")
 @export var melee_reach := 46.0  ## px from the player's centre that the blow reaches
@@ -32,3 +37,4 @@ enum Kind { RANGED, MELEE }
 @export var icon_scale := 1.0
 @export var icon_rotation_deg := 0.0  ## turns the art so it points right (the bat is drawn on a diagonal)
 @export var icon_offset := Vector2.ZERO  ## px (after scale) from the hand to the art's centre
+@export var muzzle_offset := Vector2(8, -2)  ## px from the hand to where bullets and the flash come out (the barrel tip)

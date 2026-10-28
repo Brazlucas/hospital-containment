@@ -53,6 +53,7 @@ static func death(holder: Node, pos: Vector2, from: Vector2) -> void:
 		var g := Sprite2D.new()
 		g.texture = GIBS[randi() % GIBS.size()]
 		g.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		g.add_to_group("gibs")
 		g.z_index = 21
 		holder.add_child(g)
 		g.global_position = pos
@@ -67,6 +68,26 @@ static func death(holder: Node, pos: Vector2, from: Vector2) -> void:
 		tw.tween_interval(randf_range(4.0, 8.0))
 		tw.tween_property(g, "modulate:a", 0.0, 1.0)
 		tw.tween_callback(g.queue_free)
+
+
+## Wipes the arena's blood: the stains and the gibs on the floor fade out, and the floor stops reflecting like a pool.
+## The blood painted in the background and the water puddles stay.
+static func clear(tree: SceneTree, fade := 1.0) -> void:
+	var decals := tree.get_first_node_in_group("decals")
+	if decals:
+		for d in decals.get_children():
+			_fade_out(d, fade)
+	for g in tree.get_nodes_in_group("gibs"):
+		_fade_out(g, fade)
+	var map := tree.get_first_node_in_group("reflection_map") as ReflectionMap
+	if map:
+		tree.create_timer(fade).timeout.connect(map.reset_wet)
+
+
+static func _fade_out(item: CanvasItem, time: float) -> void:
+	var tw := item.create_tween()  # bound to the item; a gib's own fade only starts seconds later, after this one has freed it
+	tw.tween_property(item, "modulate:a", 0.0, time)
+	tw.tween_callback(item.queue_free)
 
 
 static func stain(holder: Node, pos: Vector2) -> void:

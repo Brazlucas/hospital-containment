@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SynergyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/synergy_data.gd" id="1_sy"]
+
+[resource]
+script = ExtResource("1_sy")
+id = &"rajada"
+display_name = "Rajada"
+description = "Duas SMGs: cadência e dano."
+requires = {
+"smg": 2
+}
+modifiers = {
+"attack_speed_pct": 25.0,
+"damage_pct": 10.0
+}
+color = Color(0.95, 0.85, 0.4, 1)

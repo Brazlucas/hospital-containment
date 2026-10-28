@@ -12,3 +12,4 @@ damage = 4.0
 cooldown = 0.55
 attack_range = 190.0
 projectile_speed = 420.0
+tags = PackedStringArray("bala", "pistola")
