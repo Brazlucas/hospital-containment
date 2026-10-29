@@ -195,6 +195,7 @@ func take_damage(amount: float) -> void:
 	var taken := maxf(1.0, amount * RunState.stats.damage_taken_mult())
 	hp = maxf(0.0, hp - taken)
 	Events.player_hurt.emit(taken)
+	Input.start_joy_vibration(0, clampf(0.3 + taken * 0.1, 0.3, 0.8), clampf(0.2 + taken * 0.2, 0.2, 1.0), 0.25)  # the pad shakes too
 	_invulnerable = HIT_INVULNERABLE
 	HurtFlash.play(_sprite, get_tree(), 1.0, 0.3)
 	shake(2.5, 0.15)

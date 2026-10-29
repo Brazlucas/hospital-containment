@@ -108,6 +108,12 @@ direção aos pés), deixa um rastro de cópias brilhantes que somem (`Enemy._le
 Só a cor: cada zumbi sorteia ao nascer matiz (±0,9 rad), saturação e brilho (`Enemy._vary_look`, uniforms em `hurt_flash.gdshader`). Tamanho, andar
 e sangue não variam. Os fantasmas não variam. Moedas: `EnemyData.drop_chance` (médico 1 moeda 80%, rastejante 50%, fantasma 2 moedas 80%).
 
+## Controle (gamepad)
+
+Movimento: analógico esquerdo e direcional (`move_*` no `project.godot`, `Input.get_vector` lê o analógico de verdade, então andar devagar ou rápido segue o quanto você inclina).
+Menus (habilidades e loja): direcional ou analógico navega entre os cards, **A** compra/escolhe e também recomeça a run (são as ações `ui_*` padrão do Godot). A arma mira e atira sozinha.
+Quando o player apanha o controle vibra (`Input.start_joy_vibration`, mais forte quanto maior o dano). O trainer (F1) continua só de teclado e mouse.
+
 ## Dor do player
 
 Quando o player apanha (`Events.player_hurt`): a HUD treme e inclina por ~0,4 s e a barra de vida pisca (`hud.gd`), e a tela ganha artefatos

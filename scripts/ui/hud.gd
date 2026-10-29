@@ -323,5 +323,5 @@ func _on_ambience(display_name: String) -> void:
 
 func _on_run_ended(victory: bool) -> void:
 	_result_title.text = "VOCÊ SOBREVIVEU" if victory else "VOCÊ MORREU"
-	_result_body.text = "Onda %d  ·  %d abates  ·  Nível %d\n\nENTER para recomeçar" % [RunState.wave, RunState.kills, RunState.level]
+	_result_body.text = "Onda %d  ·  %d abates  ·  Nível %d\n\nENTER ou A para recomeçar" % [RunState.wave, RunState.kills, RunState.level]
 	_result.visible = true
